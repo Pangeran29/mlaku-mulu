@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model user {
+  id              Int      @unique @default(autoincrement())
+  email           String   @unique
+  password        String
+  is_tourist      Boolean  @default(false)
+  tourist_id      Int?
+  related_tourist tourist? @relation(fields: [tourist_id], references: [id])
+  created_at      DateTime @default(now())
+  updated_at      DateTime @updatedAt
+}
+
+model tourist {
+  id           Int       @unique @default(autoincrement())
+  name         String
+  phone_number String
+  address      String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+  user         user[]
+  history      history[]
+}
+
+model location {
+  id                    Int           @unique @default(autoincrement())
+  name                  String
+  city                  String
+  address               String
+  type                  location_type
+  created_at            DateTime      @default(now())
+  updated_at            DateTime      @updatedAt
+  history_location_from history[]     @relation(name: "history_location_from")
+  history_location_to   history[]     @relation(name: "history_location_to")
+}
+
+enum location_type {
+  departing_from
+  destiination_to
+}
+
+model history {
+  id                    Int      @unique @default(autoincrement())
+  location_from_id      Int
+  history_location_from location @relation(name: "history_location_from", fields: [location_from_id], references: [id])
+  location_to_id        Int
+  history_location_to   location @relation(name: "history_location_to", fields: [location_to_id], references: [id])
+  travel_at             DateTime
+  tourist_id            Int
+  tourist               tourist  @relation(fields: [tourist_id], references: [id])
+  created_at            DateTime @default(now())
+  updated_at            DateTime @updatedAt
+}

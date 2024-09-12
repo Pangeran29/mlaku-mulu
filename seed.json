@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Buah Batu",
+    "city": "Bandung",
+    "address": "JL SOEKARNO-HATTA NO482, BATUNUNGGAL, KEC BANDUNG KIDUL, KOTA BANDUNG, JAWA BARAT 40266",
+    "type": "departing_from"
+  },
+  {
+    "name": "Jatiwaringin",
+    "city": "Bekasi",
+    "address": "JL RAYA JATIWARINGIN NO5J, DEKAT UNIVASSAFIAHRT007RW9, JATICEMPAKA, KEC PONDOKGEDE, KOTA BKS, JAWA BARAT 17411",
+    "type": "destiination_to"
+  },
+  {
+    "name": "John Doe",
+    "phone_number": "6282171558690",
+    "address": "Jakarta"
+  },
+  {
+    "name": "Susan Susanti",
+    "phone_number": "6282171558690",
+    "address": "Jakarta"
+  }
+]
