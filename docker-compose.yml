@@ -13,7 +13,7 @@ services:
       - db:/var/lib/postgresql/data
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -34,6 +34,17 @@ services:
       postgres:
         condition: service_healthy
     command: sh -c "npx prisma migrate dev && npm start"
+
+  nginx:
+    image: nginx:latest
+    container_name: mlaku-mulu-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - api
+    restart: always
 
 volumes:
   db:
