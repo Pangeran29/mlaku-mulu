@@ -24,7 +24,16 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Mlaku mulu backend API - http://20.2.250.135/api/docs
+
+## Deployment
+
+This API service deployed on VPS with help of Docker and Nginx. Step of Deployment:
+
+1. Pull the repository
+2. Create '.env' file in root directory and fill with value from '.env.docker' file
+3. Spin up the container with 'docker compose up --build -d'
+4. Set up the nginx with configuration file in 'nginx.conf'
 
 ## Installation
 
@@ -71,6 +80,9 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
 # openidea
+
 # openidea
+
 # mlaku-mulu
